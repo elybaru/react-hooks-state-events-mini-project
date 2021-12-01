@@ -1,6 +1,6 @@
 import React from "react";
 
-function NewTaskForm() {
+function NewTaskForm({ categories }) {
   return (
     <form className="new-task-form">
       <label>
@@ -9,7 +9,11 @@ function NewTaskForm() {
       </label>
       <label>
         Category
+        <h1>{categories[1]}</h1>
         <select name="category">
+          {categories.filter((category) => category !== "All").map((category, index) => {
+            <option value={category[index]}>{category[index]}</option>
+          })}
           {/* render <option> elements for each category here */}
         </select>
       </label>
