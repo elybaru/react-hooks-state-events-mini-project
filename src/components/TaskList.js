@@ -15,7 +15,7 @@ function TaskList({ tasks, handleDeleteTask, selected }) {
     < div className="tasks" >
       <ul className="tasksListUl">
         {tasksToDisplay.map((task, index) => (
-          <Task key={task.text} task={task.text} category={task.category} handleDeleteTask={handleDeleteTask} />
+          <Task key={index} task={task.text} category={task.category} handleDeleteTask={handleDeleteTask} />
         ))}
       </ul>
     </div >

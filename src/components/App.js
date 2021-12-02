@@ -10,7 +10,7 @@ console.log("Here's the data you're working with");
 function App() {
   const [tasks, setTasks] = useState(TASKS)
   const [categories, setCategories] = useState(CATEGORIES)
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState("All")
 
   const handleClick = event => { setSelected(event.target.innerText) }
 
@@ -22,11 +22,15 @@ function App() {
     }))
   }
 
+  function handleTaskSubmit(newTask) {
+    setTasks([...tasks, newTask])
+  }
+
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={categories} selected={selected} handleClick={handleClick} />
-      <NewTaskForm categories={CATEGORIES} />
+      <NewTaskForm categories={categories.filter((category) => category !== "All")} tasks={tasks} handleTaskSubmit={handleTaskSubmit} />
       <TaskList handleDeleteTask={handleDeleteTask} tasks={tasks} selected={selected} />
     </div>
   );
